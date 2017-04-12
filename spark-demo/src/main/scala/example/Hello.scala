@@ -11,7 +11,7 @@ object Hello extends App {
 
   val context = new SparkContext(conf)
 
-  val translated = context.textFile("/tmp/")
+  val translated = context.textFile("words.txt")
     .map(line => line.split("\\s+")
     .map(word => dict.getOrElse(word, word))
     .mkString(" "))
