@@ -4,9 +4,10 @@ lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
       organization := "com.szaqal",
-      scalaVersion := "2.12.1",
+      scalaVersion := "2.11.1",
       version      := "0.1.0-SNAPSHOT"
     )),
     name := "Hello",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += spark
   )
