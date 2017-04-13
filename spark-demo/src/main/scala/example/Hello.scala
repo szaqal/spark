@@ -9,7 +9,7 @@ object Hello {
 
   def main(args:Array[String]): Unit = {
 
-    val conf = new SparkConf().setAppName("SparkDemos").setMaster("spark://127.0.0.1:7077")
+    val conf = new SparkConf().setAppName("SparkDemos")
 
     val context = new SparkContext(conf)
 
