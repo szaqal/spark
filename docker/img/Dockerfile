@@ -7,7 +7,8 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 
 RUN apt-get update && apt-get install -y oracle-java8-installer
 
-ADD http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz /
+#ADD http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz /
+ADD http://192.168.2.11/spark-2.1.0-bin-hadoop2.7.tgz /
 
 RUN tar -xzvf spark-2.1.0-bin-hadoop2.7.tgz && ln -s spark-2.1.0-bin-hadoop2.7 /spark
 
