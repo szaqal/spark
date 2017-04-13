@@ -3,14 +3,13 @@ package example
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
 
-import scala.io.Source
 
 object Hello {
 
 
   def main(args:Array[String]): Unit = {
 
-    val conf = new SparkConf().setAppName("test").setMaster("spark://127.0.0.1:7077")
+    val conf = new SparkConf().setAppName("SparkDemos").setMaster("spark://127.0.0.1:7077")
 
     val context = new SparkContext(conf)
 
@@ -21,7 +20,7 @@ object Hello {
     println("--------------------------")
     println(s"Lines with a: $numAs, Lines with b: $numBs")
     println("--------------------------")
-    context.stop()
+    //SparkDemos.context.stop()
   }
 
 }

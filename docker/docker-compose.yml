@@ -21,7 +21,7 @@ services:
       - 7078:7078  
     environment:    
       - SLAVE_PORT=7078
-      - MEMORY=1512m  
+      - MEMORY=1024m  
 
   spark-slave-2:
     build: ./img      
@@ -35,7 +35,7 @@ services:
       - 7079:7079  
     environment:    
       - SLAVE_PORT=7079
-      - MEMORY=256m
+      - MEMORY=1024m
     
   spark-slave-3:
     build: ./img      
@@ -49,4 +49,4 @@ services:
       - 7080:7080  
     environment:    
       - SLAVE_PORT=7080
-      - MEMORY=256m
+      - MEMORY=128m
