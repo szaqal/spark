@@ -5,27 +5,23 @@ import org.apache.spark.SparkConf
 
 import scala.io.Source
 
-object Hello extends App {
-  val conf = new SparkConf().setAppName("test").setMaster("spark://127.0.0.1:7077")
-  val dict = getDictionary("German")
-
-  val context = new SparkContext(conf)
-
-  val translated = context.textFile("words.txt")
-    .map(line => line.split("\\s+")
-    .map(word => dict.getOrElse(word, word))
-    .mkString(" "))
-
-  print(translated.collect())
+object Hello {
 
 
-  def getDictionary(lang:String): Map[String, String] = {
-    val url = "http://www.june29.com/IDP/files/%s.txt".format(lang)
-    println("Grabbing dictionary from: %s".format(url))
-    Source.fromURL(url, "ISO-8859-1").mkString
-      .split("\\r?\\n")
-      .filter(line => !line.startsWith("#"))
-      .map(line => line.split("\\t"))
-      .map(tkns => (tkns(0).trim, tkns(1).trim)).toMap
+  def main(args:Array[String]): Unit = {
+
+    val conf = new SparkConf().setAppName("test").setMaster("spark://127.0.0.1:7077")
+
+    val context = new SparkContext(conf)
+
+    val logData = context.textFile("file:///etc/hosts"  , 2)
+    logData.foreach(println)
+    val numAs = logData.filter(line => line.contains("a")).count()
+    val numBs = logData.filter(line => line.contains("b")).count()
+    println("--------------------------")
+    println(s"Lines with a: $numAs, Lines with b: $numBs")
+    println("--------------------------")
+    context.stop()
   }
+
 }
