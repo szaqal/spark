@@ -17,7 +17,7 @@ object JdbcDemo {
     val jdbcDF = spark.read
       .format("jdbc")
       .option("driver", "com.mysql.jdbc.Driver")
-      .option("url", "jdbc:mysql://172.17.0.1:3307/dhengine")
+      .option("url", "jdbc:mysql://192.168.2.11:3307/dhengine")
       .option("dbtable", "dhengine.IncomingMessage")
       .option("user", "dh")
       .option("password", "dh123")
