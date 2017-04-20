@@ -21,7 +21,7 @@ services:
       - 7078:7078  
     environment:    
       - SLAVE_PORT=7078
-      - MEMORY=1024m  
+      - MEMORY=512m  
 
   spark-slave-2:
     build: ./img      
@@ -35,7 +35,7 @@ services:
       - 7079:7079  
     environment:    
       - SLAVE_PORT=7079
-      - MEMORY=1024m
+      - MEMORY=512m
     
   spark-slave-3:
     build: ./img      
@@ -49,4 +49,18 @@ services:
       - 7080:7080  
     environment:    
       - SLAVE_PORT=7080
-      - MEMORY=128m
+      - MEMORY=512m
+
+#  spark-slave-4:
+#    build: ./img      
+#    container_name: spark-slave-4
+#    hostname: spark-slave-4
+#    command: ./start-slave.sh
+#    depends_on:
+#      - spark-master     
+#    ports:
+#      - 8084:8081       
+#      - 7081:7081  
+#    environment:    
+#      - SLAVE_PORT=7081
+#      - MEMORY=512m
